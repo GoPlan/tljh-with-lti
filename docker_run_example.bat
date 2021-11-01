@@ -1,0 +1,1 @@
+docker run --privileged --detach --name=tljh-dev --publish 12000:80 --mount type=bind,source=$(pwd)/the-littlest-jupyterhub,target=/srv/src tljh-with-lti

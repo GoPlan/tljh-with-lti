@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  tljh-with-lti:
+    container_name: tljh-dev
+    privileged: true
+    image: tljh-with-lti
+    ports:
+      - "12000:80"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./the-littlest-jupyterhub:/srv/src
+    environment:
+      - LTI_CLIENT_KEY=0db1610c34c07235f03f60eafe94640b9a12eb43902d0b0addc5bee8ba34587f
+      - LTI_SHARED_SECRET=d2b9af96daac9ed4776a75f04f8ba534bf9d4a5ca4e54e0894e600d4f9b63d3a
+
