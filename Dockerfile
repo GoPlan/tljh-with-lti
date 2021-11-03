@@ -12,9 +12,12 @@ RUN export DEBIAN_FRONTEND=noninteractive \
         curl \
         git \
         sudo \
- && rm -rf /var/lib/apt/lists/*
+ && rm -rf /var/lib/apt/lists/* 
 
-RUN pip3 install jupyterhub-ltiauthenticator
+# copy the jupyterhub LTI config to the container
+ADD ./src/jupyterhub_config_lti11.py /opt/tljh/config/jupyterhub_config.d/jupyterhub_config_lti11.py
+
+RUN python3 -m pip install jupyterhub-ltiauthenticator 
 
 # Kill all the things we don't need
 RUN find /etc/systemd/system \
